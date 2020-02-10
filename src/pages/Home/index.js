@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { MdAddShoppingCart } from 'react-icons/md';
 import api from '../../services/api';
+import * as CartActions from '../../store/modules/cart/actions';
 
 import { ProductList } from './styles';
 
@@ -21,10 +22,7 @@ export default function Home() {
   }, []);
 
  const handleAddProduct = (product) => {
-    dispatch({
-      type: 'ADD_TO_CART',
-      product: product
-    })
+    dispatch(CartActions.addToCart(product))
   }
 
   return (
@@ -37,7 +35,7 @@ export default function Home() {
 
           <button type="button" onClick={() => handleAddProduct(product)}>
             <div>
-              <MdAddShoppingCart size={16} color="#FFF" /> {cart.length}
+              <MdAddShoppingCart size={16} color="#FFF" /> {'a'}
             </div>
 
             <span>ADICIONAR AO CARRINHO</span>
